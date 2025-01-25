@@ -14,5 +14,27 @@ const addCourse = async (courseData) => {
   return result.insertId;
 };
 
-module.exports = { getAllCourses, addCourse };
+
+const patchCourse = async (id, updatedData) => {
+  const { title, description, duration, price, category, difficulty } = updatedData;
+
+  const [result] = await db.query(
+    `
+    UPDATE courses
+    SET
+      title = COALESCE(?, title),
+      description = COALESCE(?, description),
+      duration = COALESCE(?, duration),
+      price = COALESCE(?, price),
+      category = COALESCE(?, category),
+      difficulty = COALESCE(?, difficulty)
+    WHERE id = ?
+    `,
+    [title || null, description || null, duration || null, price || null, category || null, difficulty || null, id]
+  );
+
+  return result.affectedRows > 0; // Return true if a row was updated
+};
+
+module.exports = { getAllCourses, addCourse, patchCourse };
 

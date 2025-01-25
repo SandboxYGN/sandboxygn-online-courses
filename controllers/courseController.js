@@ -18,5 +18,22 @@ const createCourse = async (req, res) => {
   }
 };
 
-module.exports = { getCourses, createCourse };
+const updateCourse = async (req, res) => {
+  try {
+    const { id } = req.params; // Extract course ID from URL params
+    const updatedData = req.body; // Extract data to update from request body
+    const updatedCourse = await courseService.updateCourse(id, updatedData); // Call service to handle update
+
+    if (updatedCourse) {
+      res.json({ message: 'Course updated successfully!', course: updatedCourse });
+    } else {
+      res.status(404).json({ error: 'Course not found' });
+    }
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+
+module.exports = { getCourses, createCourse, updateCourse };
 

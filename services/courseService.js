@@ -8,5 +8,8 @@ const createCourse = async (courseData) => {
   return await courseModel.addCourse(courseData);
 };
 
-module.exports = { getCourses, createCourse };
+const updateCourse = async (id,updatedData) => {
+	return await courseModel.patchCourse(id,updatedData);
+};
+module.exports = { getCourses, createCourse , updateCourse };
 
