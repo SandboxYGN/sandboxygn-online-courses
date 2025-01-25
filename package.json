@@ -7,7 +7,7 @@
     "dev" : "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Thurain Oo",
   "license": "ISC",
   "description": "",
   "dependencies": {
