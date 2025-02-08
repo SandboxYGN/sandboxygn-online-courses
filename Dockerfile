@@ -4,17 +4,15 @@ FROM node:22-alpine
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
+# Copy application source code
+COPY . .
 
 # Install dependencies
 RUN npm install --only=production
 
-# Copy application source code
-COPY . .
 
 # Expose the port the app runs on
 EXPOSE 80
 
 # Start the application
-CMD ["node", "server.js"]
+CMD ["node", "app.js"]
