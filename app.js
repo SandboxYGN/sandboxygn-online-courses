@@ -4,6 +4,7 @@ const cors = require('cors');
 const courseRoutes = require('./routes/courseRoutes');
 require('dotenv').config();
 
+// Hello 
 const app = express();
 
 // Middleware
