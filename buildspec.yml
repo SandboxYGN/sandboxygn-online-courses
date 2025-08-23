@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo Installing Node.js dependencies...
+      - npm install
+  pre_build:
+    commands:
+      - echo Pre-build step: verifying environment
+      - node -v
+      - npm -v
+  build:
+    commands:
+      - echo "Build step: nothing to compile for Node.js, skipping..."
+      - echo "Optional: run lint or tests here"
+  post_build:
+    commands:
+      - echo Build completed successfully at `date`
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: no
