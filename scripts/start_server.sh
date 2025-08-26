@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /home/ubuntu/sandboxygn-online-courses
+cd ../
 pm2 start app.js --name mynodeapp
